@@ -32,6 +32,11 @@
   --color-gold-pale: #fffbec;
   --color-gold-border: #e8c058;
 
+  /* Logo sizing variables */
+  --logo-height-desktop: 80px;
+  --logo-height-tablet: 64px;
+  --logo-height-mobile: 48px;
+
   /* Color Palette RGB (for dynamic rgba blending) */
   --color-green-rgb: 26, 122, 74;
   --color-green-light-rgb: 46, 204, 113;
@@ -96,8 +101,8 @@
   --space-2xl: 8rem;
 
   /* Layout Standard Sizes */
-  --nav-height: 76px;
-  --nav-height-mobile: 64px;
+  --nav-height: 84px;
+  --nav-height-mobile: 68px;
   
   /* Transitions */
   --transition-fast: 0.2s ease;
@@ -156,7 +161,8 @@ img { max-width: 100%; display: block; }
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 6%; height: var(--nav-height);
+  padding: var(--space-sm) var(--space-lg);
+  height: var(--nav-height);
   background: rgba(var(--color-white-rgb), 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -169,20 +175,30 @@ nav.scrolled {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   border-bottom-color: rgba(26, 122, 74, 0.12);
 }
-.nav-logo {
+.nav-brand {
   display: flex;
   align-items: center;
   cursor: pointer;
   height: 100%;
+  margin-right: var(--space-lg);
 }
-.nav-logo img {
-  height: 40px;
+.brand-logo {
+  height: var(--logo-height-desktop);
   width: auto;
   object-fit: contain;
   transition: transform var(--transition-premium);
 }
-.nav-logo img:hover {
+.brand-logo:hover {
   transform: scale(1.04);
+}
+/* Tablet */
+@media (max-width: 1024px) {
+  .brand-logo { height: var(--logo-height-tablet); }
+}
+/* Mobile */
+@media (max-width: 640px) {
+  .brand-logo { height: var(--logo-height-mobile); }
+  .nav-brand { margin-right: var(--space-md); }
 }
 .nav-links { display: flex; gap: var(--space-xs); align-items: center; }
 .nav-links a {
