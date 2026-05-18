@@ -438,7 +438,11 @@ document.addEventListener('click', function(event) {
   if (isDead) {
     event.preventDefault();
     event.stopPropagation();
-    showPremiumToast("Google form coming soon...");
+    if (target.classList.contains('social-icon') || target.closest('.social-icons') || target.closest('.mobile-social')) {
+      showPremiumToast("Social media links coming soon... 🚀");
+    } else {
+      showPremiumToast("Google form coming soon...");
+    }
   }
 }, true); // useCapture = true
 
